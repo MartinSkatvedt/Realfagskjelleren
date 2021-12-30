@@ -20,6 +20,8 @@ from rest_framework import routers
 from inventoryManager import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import url
+from django.contrib.auth.views import LoginView
 
 router = routers.DefaultRouter()
 router.register(r'products', views.ProductView)
@@ -27,5 +29,10 @@ router.register(r'merch', views.MerchView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('api/', include(router.urls)),
+    path('openid/', include('oidc_provider.urls', namespace='oidc_provider')),  
+    path('accounts/', include('django.contrib.auth.urls')),
+] 
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
