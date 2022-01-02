@@ -19,3 +19,20 @@ class Merch(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductCount(models.Model):
+    date = models.DateField(auto_now_add=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
+    amount = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.product.name + " " + str(self.amount)
+
+class TotalProductCount(models.Model):
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=None)
+    data = models.ManyToManyField(ProductCount)
+
+    def __str__(self):
+        return self.author.username + " " + str(self.date)

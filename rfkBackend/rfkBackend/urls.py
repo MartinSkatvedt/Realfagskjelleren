@@ -20,12 +20,12 @@ from rest_framework import routers
 from inventoryManager import views
 from django.conf.urls.static import static
 from django.conf import settings
-from django.conf.urls import url
-from django.contrib.auth.views import LoginView
 
 router = routers.DefaultRouter()
 router.register(r'products', views.ProductView)
 router.register(r'merch', views.MerchView)
+router.register(r'productcount', views.ProductCountView)
+router.register(r'totalproductcount', views.TotalProductCountView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
