@@ -4,7 +4,7 @@ from .models import Product, Merch, ProductCount, TotalProductCount
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'image')
+        fields = ('id', 'name', 'description', 'image', 'active')
 
 
 class MerchSerializer(serializers.ModelSerializer):

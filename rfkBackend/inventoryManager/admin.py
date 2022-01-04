@@ -4,7 +4,7 @@ from .models import Product, Merch, ProductCount, TotalProductCount
 # Register your models here.
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ('name', 'description', 'active')
 
 
 class MerchAdmin(admin.ModelAdmin):
