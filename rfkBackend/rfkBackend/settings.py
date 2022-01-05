@@ -153,8 +153,9 @@ LOGIN_URL = '/accounts/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000',
+    'http://localhost:3000',
     'http://localhost:5500',
+    'https://realfagskjelleren.no'
 ]
 
 OIDC_USERINFO = 'rfkBackend.oidc_provider_settings.userinfo'
