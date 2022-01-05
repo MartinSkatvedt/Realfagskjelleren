@@ -157,4 +157,4 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:5500',
 ]
 
-OIDC_USERINFO = 'myproject.oidc_provider_settings.userinfo'
+OIDC_USERINFO = 'rfkBackend.oidc_provider_settings.userinfo'
