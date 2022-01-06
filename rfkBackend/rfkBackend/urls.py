@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('openid/', include('oidc_provider.urls', namespace='oidc_provider')),  
     path('accounts/', include('django.contrib.auth.urls')),
+    path('', admin.site.urls),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
