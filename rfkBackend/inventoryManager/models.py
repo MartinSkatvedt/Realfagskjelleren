@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 class Product(models.Model):
@@ -32,7 +32,7 @@ class ProductCount(models.Model):
 
 class TotalProductCount(models.Model):
     date = models.DateField(auto_now_add=True)
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=None)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
     data = models.ManyToManyField(ProductCount)
 
     def __str__(self):

@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',
     'corsheaders',
-    'oidc_provider',
-    'storages'
+    'storages',
+    'oauth2_provider',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -149,8 +150,6 @@ PRIVATE_FILE_STORAGE = 'hello_django.storage_backends.PrivateMediaStorage'
 STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 
-LOGIN_URL = '/accounts/login/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -163,4 +162,5 @@ CORS_ORIGIN_WHITELIST = [
     'https://www.realfagskjelleren.no',
 ]
 
-OIDC_USERINFO = 'rfkBackend.oidc_provider_settings.userinfo'
+AUTH_USER_MODEL='users.User'
+LOGIN_URL='/admin/login/'

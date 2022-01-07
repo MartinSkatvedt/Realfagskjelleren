@@ -2,12 +2,12 @@ from django.shortcuts import render
 from rest_framework import viewsets
 # Create your views here.
 from rest_framework.permissions import IsAuthenticated
-from oidc_provider.lib.utils.oauth2 import protected_resource_view
+from oauth2_provider.views.generic import ProtectedResourceView
 
 from .serializers import ProductSerializer, MerchSerializer, ProductCountSerializer, TotalProductCountSerializer
 from .models import Product, Merch, ProductCount, TotalProductCount
 
-class ProductView(viewsets.ModelViewSet):
+class ProductView(viewsets.ModelViewSet, ProtectedResourceView):
     permission_classes = [IsAuthenticated]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
