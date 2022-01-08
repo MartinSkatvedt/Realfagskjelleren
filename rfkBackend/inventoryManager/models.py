@@ -37,3 +37,12 @@ class TotalProductCount(models.Model):
 
     def __str__(self):
         return self.author.username + " " + str(self.date)
+
+class ProductReplenishment(models.Model):
+    date = models.DateField(auto_now_add=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    data = models.ManyToManyField(ProductCount)
+
+    def __str__(self):
+        return self.author.username + " " + str(self.date)
+        

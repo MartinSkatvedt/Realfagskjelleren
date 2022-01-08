@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Merch, ProductCount, TotalProductCount
+from .models import Product, Merch, ProductCount, TotalProductCount, ProductReplenishment
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,7 +28,21 @@ class TotalProductCountSerializer(serializers.ModelSerializer):
             totalProductCount.data.add(item)
         return totalProductCount
     
-  
     class Meta:
         model = TotalProductCount
+        fields = ('id', 'date', 'author', 'data')
+
+class ProductReplenishmentSerializer(serializers.ModelSerializer):
+    data = ProductCountSerializer(many=True)
+
+    def create(self, validated_data):
+        data = validated_data.pop('data')
+        productReplenishment = ProductReplenishment.objects.create(**validated_data)
+        for item in data:
+            item = ProductCount.objects.create(**item)
+            productReplenishment.data.add(item)
+        return productReplenishment
+  
+    class Meta:
+        model = ProductReplenishment
         fields = ('id', 'date', 'author', 'data')

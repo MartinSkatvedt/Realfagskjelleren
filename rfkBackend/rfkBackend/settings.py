@@ -41,13 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventoryManager',
-    'core',
     'rest_framework',
     'corsheaders',
     'storages',
     'oauth2_provider',
     'users',
+    'inventoryManager',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -179,6 +179,8 @@ OAUTH2_PROVIDER = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',

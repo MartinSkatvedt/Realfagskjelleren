@@ -27,6 +27,7 @@ router.register(r'products', im_views.ProductView)
 router.register(r'merch', im_views.MerchView)
 router.register(r'productcount', im_views.ProductCountView)
 router.register(r'totalproductcount', im_views.TotalProductCountView)
+router.register(r'productreplenishment', im_views.ProductReplenishmentView)
 router.register(r'users', user_views.UserView)
 
 urlpatterns = [
