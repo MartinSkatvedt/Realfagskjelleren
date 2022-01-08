@@ -17,15 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from rest_framework import routers
-from inventoryManager import views
+from inventoryManager import views as im_views
+from users import views as user_views
 from django.conf.urls.static import static
 from django.conf import settings
 
 router = routers.DefaultRouter()
-router.register(r'products', views.ProductView)
-router.register(r'merch', views.MerchView)
-router.register(r'productcount', views.ProductCountView)
-router.register(r'totalproductcount', views.TotalProductCountView)
+router.register(r'products', im_views.ProductView)
+router.register(r'merch', im_views.MerchView)
+router.register(r'productcount', im_views.ProductCountView)
+router.register(r'totalproductcount', im_views.TotalProductCountView)
+router.register(r'users', user_views.UserView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

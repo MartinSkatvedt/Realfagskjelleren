@@ -167,10 +167,20 @@ LOGIN_URL='/admin/login/'
 
 OAUTH2_PROVIDER = {
     "OIDC_ENABLED": True,
-    "OIDC_RSA_PRIVATE_KEY": os.environ.get("OIDC_KEY"),
+    "OIDC_RSA_PRIVATE_KEY": os.getenv("OIDC_KEY"),
+    "OAUTH2_VALIDATOR_CLASS": "rfkBackend.oauth_validators.CustomOAuth2Validator",
     "SCOPES": {
         "openid": "OpenID Connect scope",
-        # ... any other scopes that you use
+        'read': 'Read scope',
+        'write': 'Write scope',
     },
-    # ... any other settings you want
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
